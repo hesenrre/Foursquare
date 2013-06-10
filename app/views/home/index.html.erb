@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.js'></script>
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.css' rel='stylesheet' />
+  <style>
+    body { margin:0; padding:0; }
+    #map { position:absolute; top:0; bottom:0; width:100%; }
+  </style>
+</head>
+<body>
+<div id='map'></div>
+<script type='text/javascript'>
+navigator.geolocation.getCurrentPosition(function(data) {
+    var lat = data['coords']['latitude'];
+    var lng = data['coords']['longitude'];
+    /* Create map. */
+    //alert(lat + " " + lng);
+    var map = L.mapbox.map('map', 'examples.map-4l7djmvo')
+    .setView(new L.LatLng(lat, lng), 15);
+
+    var coords = {lat: lat, lng: lng};
+
+      $.post("/load_venues",coords).done(function(data){                          
+                          for(i = 0; i < data.length; i++)
+                          {
+                            auxCategories = data[i].categories;
+                            auxLocation = data[i].location;
+                            if(auxCategories[0] != undefined )
+                            {
+                              var latLng = new L.LatLng(
+                                  auxLocation.lat,
+                                  auxLocation.lng
+                              );
+
+                              var leafletIcon = L.icon({
+                                iconUrl: auxCategories[0].icon,
+                                iconSize: new L.Point(32,32),
+                                iconAnchor: new L.Point(16, 41),
+                                popupAnchor: new L.Point(0, -51),
+                                options: null
+                              });
+                              var marker = new L.Marker(latLng, {icon: leafletIcon})
+                              .bindPopup(data[i].name, { closeButton: false })
+                              .on('mouseover', function(e) { this.openPopup(); })
+                              .on('mouseout', function(e) { this.closePopup(); });
+                              map.addLayer(marker);
+                            }
+                          }
+                        });
+  });
+
+</script>
+</body>
+</html>
