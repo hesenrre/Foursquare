@@ -16,7 +16,7 @@
     <h3>Mapa</h3>
     <button type="button" onclick="centerMap()">Mi ubicación</button>
     <br/>
-    <input type="text">
+    <input id="inputText" type="text">
     <button type="button" onclick="busqueda()">Búsqueda</button>
   </div>
   
@@ -25,10 +25,13 @@
 <script type='text/javascript'>
 var lat = 0;
 var lng = 0;
-var map;
-
+var map = null;
+var arrayMarkers = null;
+var contMarker = 0;
 var putMarker = function(data)
 {
+  arrayMarkers = new Array();
+  contMarker = 0;
   for(i = 0; i < data.length; i++)
   {
     auxCategories = data[i].categories;
@@ -51,14 +54,30 @@ var putMarker = function(data)
         .on('mouseover', function(e) { this.openPopup(); })
         .on('mouseout', function(e) { this.closePopup(); });
         map.addLayer(marker);
+      arrayMarkers[contMarker] = marker;
+      contMarker++;
     }
   }
 };
 
+var clearMarker = function()
+{
+  for(i = 0; i < contMarker; i++)
+  {
+    map.removeLayer(arrayMarkers[i]);
+  }
+  arrayMarkers = null;
+};
+
 var busqueda = function()
 {
-  var data = {lat: lat, lng: lng, search: ""};
-  map.redraw();
+  var data = null;
+  if($("#inputText").val() != "")
+    data = {lat: lat, lng: lng, search: $("#inputText").val()};
+  else
+    data = {lat: lat, lng: lng};
+
+  clearMarker();
   $.post("/load_venues",data).done(function(data){putMarker(data)});
 };
 
