@@ -115,11 +115,11 @@ var clearMarker = function()
 var busqueda = function()
 {
   var data = null;
+  latLng = map.getCenter();
   if($("#inputText").val() != "")
-    data = {lat: lat, lng: lng, search: $("#inputText").val()};
+    data = {lat: latLng.lat, lng: latLng.lng, search: $("#inputText").val()};
   else
-    data = {lat: lat, lng: lng};
-
+    data = {lat: latLng.lat, lng: latLng.lng};
   clearMarker();
   $.post("/load_venues",data).done(function(data){putMarker(data)});
 };
