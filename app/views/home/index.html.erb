@@ -8,59 +8,28 @@
 </head>
 <body>
 <div id="main">
+  <div id="logobar">
+    <%= image_tag "Logo.png" %>
+    <h1>ENCARGUITOS</h1>
+  </div>
   <div id="toolbar">
     <form class="form-search">
       <button type="button" onclick="centerMap()">
         <%= image_tag "locations.png", :class => "loc_icon" %>
       </button>
-      <input id="inputText" type="text" class="input-medium search-query">
-      <button type="button" class="btn" onclick="busqueda()">Búsqueda</button> 
+      <div class="input-append">
+        <input id="inputText" type="text" class="input-medium search-query">
+        <span class="add-on" onclick="busqueda()"><i class="icon-search"></i></button> 
+      </div>
     </form>
   </div>
   <div id = "content">
-    <table border="0">
-    <tr>
-      <td>
-        Item1
-      </td>
-      <td>
-        <input id="quitItem1" type="button">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Item2
-      </td>
-      <td>
-        <input id="quitItem2" type="button">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Item3
-      </td>
-      <td>
-        <input id="quitItem3" type="button">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Item4
-      </td>
-      <td>
-        <input id="quitItem4" type="button">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Item5
-      </td>
-      <td>
-        <input id="quitItem5" type="button">
-      </td>
-    </tr>
-    </table>
-
+    <ul class="unstyled">
+      <li><i class="icon-minus-sign"></i> Item1</li>
+      <li><i class="icon-minus-sign"></i> Item2</li>
+      <li><i class="icon-minus-sign"></i> Item3</li>
+      <li><i class="icon-minus-sign"></i> Item4</li>
+    </ul>
   </div>
   
   <div id='map'></div>

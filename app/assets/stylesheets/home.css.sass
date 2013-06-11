@@ -16,9 +16,10 @@ body
 
   #toolbar
     width: auto
-    position: relative
+    position: absolute
     float: right
-    background-color: rgba(255,255,255,0.88)
+    top: 15px
+    right: 20px
     padding: 10px 15px
 
     form
@@ -26,8 +27,35 @@ body
 
     .loc_icon
       width: 15px
+
   #content
     float: left
     position: relative
     padding: 15px
     background: rgba(255,255,255,0.88)
+
+  #logobar
+    /* Firefox v3.6+ */
+    background-image: -moz-linear-gradient(rgb(101,0,0) 1%,rgba(235,27,35,0.8) 99%)
+    /* safari v4.0+ and by Chrome v3.0+ */
+    background-image: -webkit-gradient(linear,color-stop(0.01, rgb(101,0,0)),color-stop(0.99, rgba(235,27,35,0.8)))
+    /* Chrome v10.0+ and by safari nightly build*/
+    background-image: -webkit-linear-gradient(rgb(101,0,0) 1%,rgba(235,27,35,0.8) 99%)
+    /* Opera v11.10+ */
+    background-image: -o-linear-gradient(rgb(101,0,0) 1%,rgba(235,27,35,0.8) 99%)
+    /* IE v10+ */
+    background-image: -ms-linear-gradient(rgb(101,0,0) 1%,rgba(235,27,35,0.8) 99%)
+    background-image: linear-gradient(rgb(101,0,0) 1%,rgba(235,27,35,0.8) 99%)
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff650000,endColorstr=#cceb1b23)"
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff650000,endColorstr=#cceb1b23)
+    height: 85px
+
+    img
+      float: left
+    h1
+      font-family: "GeosansLight", sans-serif
+      color: #F27E5F
+      margin-top: 0
+      position: relative
+      top: 20px
+      left: 20px
