@@ -5,10 +5,7 @@
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.js'></script>
   <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.css' rel='stylesheet' />
-  <style>
-    body { margin:0; padding:0; }
-    #map { position:absolute; top:0; bottom:0; width:100%; }
-  </style>
+  <%= stylesheet_link_tag "home" %>
 </head>
 <body>
 <div id="main">
@@ -20,7 +17,7 @@
     <button type="button" onclick="busqueda()">Búsqueda</button>
   </div>
   
-  <div id='map' style="width:500px;height:380px;z-index:-100;"></div>
+  <div id='map'></div>
 </div>
 <script type='text/javascript'>
 var lat = 0;
