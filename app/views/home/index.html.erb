@@ -8,16 +8,16 @@
 </head>
 <body>
 <div id="main">
+  <div id="toolbar">
+    <form class="form-search">
+      <button type="button" onclick="centerMap()">
+        <%= image_tag "locations.png", :class => "loc_icon" %>
+      </button>
+      <input id="inputText" type="text" class="input-medium search-query">
+      <button type="button" class="btn" onclick="busqueda()">Búsqueda</button> 
+    </form>
+  </div>
   <div id = "content">
-    <button type="button" onclick="centerMap()"><%= image_tag "locations.png" %></button>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <input id="inputText" type="text">
-    <button type="button" onclick="busqueda()">Búsqueda</button>
-    <br/>
-
     <table border="0">
     <tr>
       <td>
@@ -60,9 +60,6 @@
       </td>
     </tr>
     </table>
-
-    
-    
 
   </div>
   
