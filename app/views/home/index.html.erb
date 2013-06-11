@@ -135,6 +135,7 @@ navigator.geolocation.getCurrentPosition(function(data) {
     /* Create map. */
     map = L.mapbox.map('map', 'examples.map-4l7djmvo')
     .setView(new L.LatLng(lat, lng), 15);
+    new L.Control.Zoom({ position: 'bottomright' }).addTo(map);
     var coords = {lat: lat, lng: lng};
     $.post("/load_venues",coords).done(function(data){putMarker(data)});
   });
